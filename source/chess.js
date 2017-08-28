@@ -18,6 +18,6 @@ function chess(N) {
     N++;
 
     return outputArr.reduceMap(function (prev, i, arr) {
-        return (i + 1) % N == 0 && i != 0 ? '\n' : prev == '\n' ? Math.floor((i + 1) / N) % 2 == 0 ? '*' : '    ' : prev == '*' ? ' ' : '*'
+        return (i + 1) % N == 0 && i != 0 ? '\n' : prev == '\n' ? Math.floor((i + 1) / N) % 2 == 0 ? '*' : ' ' : prev == '*' ? ' ' : '*'
     }, ' ').join('')
 }
