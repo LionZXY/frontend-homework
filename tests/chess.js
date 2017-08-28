@@ -64,4 +64,14 @@ QUnit.module('Тестируем функцию chess', function () {
         assert.strictEqual(chess('21'), expected);
     });
 
+    QUnit.test('Не может быть доски с отрицательным размером', function (assert) {
+        assert.strictEqual(chess(-2), null);
+        assert.strictEqual(chess('-2'), null);
+    });
+
+    QUnit.test('Не может быть доски с нулевым размером', function (assert) {
+        assert.strictEqual(chess(0), null);
+        assert.strictEqual(chess(0), null);
+    });
+
 });
