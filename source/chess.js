@@ -27,7 +27,7 @@ function chess(N) {
  * @returns {string}
  */
 function getOneLine(startSymbol, N) {
-    let array = new Array(N);
+    const array = new Array(N);
     array[0] = startSymbol;
 
     for (let i = 1; i < N; i++) {
