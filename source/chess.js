@@ -8,11 +8,14 @@ function chess(N) {
 
     N = parseInt(N);
 
-    let outputArr = new Array(N);
-    outputArr[0] = getOneLine(CELL, N);
+    const outputArr = new Array(N);
+    const line = getOneLine(CELL, N);
+    const invertedLine = getOneLine(INVERTED_CELL, N);
+    outputArr[0] = line;
 
-    for (let i = 1; i < N; i++) {
-        outputArr[i] = getOneLine(i % 2 === 0 ? CELL : INVERTED_CELL, N);
+
+    for (let i = 0; i < N; i++) {
+        outputArr[i] = i % 2 === 0 ? line : invertedLine;
     }
 
     return outputArr.join('\n') + '\n'
