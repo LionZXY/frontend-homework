@@ -1,23 +1,15 @@
-/**
- @param {function(*, number=, Array.<T>=)} callback
- @param {*} [initialValue]
- @return {Array}
- */
-Array.prototype.reduceMap = function (callback, initialValue) {
-    return this.map(function (item, i, arr) {
-        return arr[i] = callback(i === 0 ? initialValue : arr[i - 1], i, arr)
-    });
-};
-
 function chess(N) {
     if (N == 1) {
         return null
     }
 
-    var outputArr = Array.apply(null, new Array(N * 1 + N * N));
-    N++;
+    let outputArr = [' '];
 
-    return outputArr.reduceMap(function (prev, i, arr) {
-        return (i + 1) % N == 0 && i != 0 ? '\n' : prev == '\n' ? Math.floor((i + 1) / N) % 2 == 0 ? '*' : ' ' : prev == '*' ? ' ' : '*'
-    }, ' ').join('')
+    for (let i = 1; i < N * 1 + N * N; i++) {
+        outputArr.push((i + 1) % N === 0 && i !== 0 ? '\n' : // Условие 1. Если мы достигли края строки, ставим звездочку
+            outputArr[i - 1] === '\n' ? (Math.floor((i + 1) / (N + 1)) % 2 === 0 ? '*' : ' ') : // Условие 2. Если мы вначале строки, ставим знак в зависимости от четности строки
+                outputArr[i - 1] === '*' ? ' ' : '*'); // Условие 3. Текущий знак - инвертированный предыдущий
+    }
+
+    return outputArr.join('')
 }
